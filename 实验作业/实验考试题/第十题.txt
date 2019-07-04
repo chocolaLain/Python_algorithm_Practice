@@ -1,0 +1,51 @@
+import time
+
+# 班级：数字媒体技术夏季班 学号：17321140010 姓名：苗琳 题目：第十题
+
+def bubble(arr):
+    ''' 冒泡排序 '''
+    start_time = time.clock()
+    len_sort = len(arr) 
+    for i in range(len_sort):
+        for j in range(len_sort-i-1):
+            if arr[j] > arr[j + 1]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+    end_time = time.clock()
+    time2 = end_time - start_time
+    return arr, time2
+
+
+def insertionSort(arr): 
+    start_time = time.clock()
+    for i in range(1, len(arr)): 
+  
+        key = arr[i] 
+  
+        j = i-1
+        while j >=0 and key < arr[j] : 
+                arr[j+1] = arr[j] 
+                j -= 1
+        arr[j+1] = key 
+    end_time = time.clock()
+    time2 = end_time - start_time
+    return arr, time2
+
+
+if __name__ == '__main__':
+
+    array = [35, 23, 26, 42, 18, 28, 37, 45]
+    bubble_after, bubble_test_time = bubble(array)
+    print(bubble_after)
+    print("冒泡排序运行时间：%s" % bubble_test_time + "s")
+
+    instert_after, instert_test_time = insertionSort(array)
+    print(instert_after)
+    print("插入排序运行时间：%s" % instert_test_time + "s")
+
+
+    time_difference = instert_test_time - bubble_test_time
+    if time_difference <= 0:
+        print("插入排序更快，时间差：%s" % -time_difference + "s")
+    else:
+        print("冒泡排序更快，时间差：%s" % time_difference + "s")
+
